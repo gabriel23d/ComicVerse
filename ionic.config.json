@@ -1,0 +1,7 @@
+{
+  "name": "AuronComic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
