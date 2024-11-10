@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Historial de Compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="historial.length > 0; else noHistory">
+  <h2>Compras realizadas:</h2>
+
+  <ion-list>
+    <ion-item *ngFor="let comic of historial">
+      <ion-thumbnail slot="start">
+        <img [src]="comic.image" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ comic.title }}</h2>
+        <p>{{ comic.price }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ng-template #noHistory>
+  <ion-text color="danger">
+    <h2>No hay compras en el historial</h2>
+  </ion-text>
+</ng-template>
+

@@ -1,20 +1,71 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>ComicVerse</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/carrito" color="light">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+      <ion-button (click)="navigateToProfile()" color="light">
+        <ion-icon name="person"></ion-icon>
+      </ion-button>
+      <ion-button (click)="navigateToAbout()" color="light">
+        <ion-icon name="information-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)="logout()" color="light">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+ 
+  <ion-searchbar placeholder="Buscar cómics..." [(ngModel)]="searchTerm" (ionInput)="filterComics()" debounce="500"></ion-searchbar>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  
+  <ion-segment [(ngModel)]="selectedCategory" (ionChange)="filterComics()">
+    <ion-segment-button *ngFor="let category of categories" [value]="category">
+      {{ category }}
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let comic of filteredComics" class="comic-card">
+        <ion-card class="comic-card-content">
+          <ion-card-header>
+            <ion-card-title>{{ comic.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <img [src]="comic.imageUrl" />
+            <p class="comic-category">Categoría: {{ comic.category }}</p>
+            <ion-button fill="solid" expand="full" color="primary" (click)="toggleDetails(comic)">
+              {{ selectedComic === comic ? 'Ocultar Detalles' : 'Ver Detalles' }}
+            </ion-button>
+            <div *ngIf="selectedComic === comic">
+              <p><strong>Descripción:</strong> {{ comic.description }}</p>
+              <p><strong>Autor:</strong> {{ comic.author }}</p>
+              <p><strong>Ilustrador:</strong> {{ comic.illustrator }}</p>
+              <p><strong>Editorial:</strong> {{ comic.editor }}</p>
+              <p><strong>Fecha de publicación:</strong> {{ comic.publishDate }}</p>
+              <p><strong>Precio:</strong> {{ comic.price }}</p>
+
+              
+              <ion-button expand="full" color="secondary" (click)="addToCart(comic)">
+                Agregar al Carrito
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+  <ion-footer>
+    <ion-toolbar color="primary">
+      <ion-title>© 2024 ComicVerse</ion-title>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>

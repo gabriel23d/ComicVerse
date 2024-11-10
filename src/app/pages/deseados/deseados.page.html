@@ -1,0 +1,20 @@
+<<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Lista de Deseados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let comic of deseados">
+    <img [src]="comic.image" alt="{{ comic.title }}" style="width: 250px; height: 250px;" />
+    <ion-card-header>
+      <ion-card-title>{{ comic.title }}</ion-card-title>
+      <ion-card-subtitle>{{ comic.subtitle }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Precio:</strong> {{ comic.price }}</p>
+      <p><strong>Autor:</strong> {{ comic.author }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

@@ -1,27 +1,53 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
+ion-header {
+    --background: #3f51b5; /* Color de fondo del encabezado */
+  }
+  
+  ion-toolbar {
+    --color: white; /* Color del texto en el encabezado */
+  }
+  
+  .comic-card {
+    margin: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .comic-card-content {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra en las tarjetas */
+    border-radius: 10px; /* Esquinas redondeadas */
+  }
+  
+  .comic-card:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+  }
+  
+  ion-card {
+    text-align: center;
+  }
+  
+  ion-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0; /* Esquinas redondeadas en la imagen */
+  }
+  
+  .comic-category {
+    font-style: italic; /* Estilo de categoría en cursiva */
+    color: #777; /* Color gris para la categoría */
+    margin: 10px 0; /* Espaciado */
+  }
+  
+  ion-button {
+    margin-top: 10px; /* Espaciado entre la descripción y el botón */
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  ion-button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el cursor */
+    color: white; /* Cambiar el color del texto al pasar el cursor */
+  }
+  
+  ion-footer {
+    --background: #3f51b5; /* Color de fondo del pie de página */
+    --color: white; /* Color del texto en el pie de página */
+  }
+  
